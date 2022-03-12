@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="UrkeProject"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://scenes/menu.tscn"
 boot_splash/fullsize=false
-config/icon="res://icon.png"
+config/icon="res://assets/sprite/icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -96,4 +96,4 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://scripts/default_env.tres"
