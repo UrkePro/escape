@@ -1,20 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://assets/fonts/VeniceClassic.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/ui/badbuttonpressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui/buttonpressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/escapefrombrankosbasementlogo.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/buttonhovered.png" type="Texture" id=5]
-[ext_resource path="res://scripts/Button.gd" type="Script" id=6]
+[ext_resource path="res://scripts/TutorialBtn.gd" type="Script" id=6]
 [ext_resource path="res://assets/ui/menubackgroundl.png" type="Texture" id=7]
 [ext_resource path="res://assets/ui/badbutton.png" type="Texture" id=8]
 [ext_resource path="res://assets/ui/buttoncommingsoon.png" type="Texture" id=9]
-[ext_resource path="res://scripts/Button2.gd" type="Script" id=10]
+[ext_resource path="res://scripts/QuitBtn.gd" type="Script" id=10]
 [ext_resource path="res://scripts/menu.gd" type="Script" id=11]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 1 )
+[ext_resource path="res://scripts/PlayBtn.gd" type="Script" id=12]
+[ext_resource path="res://assets/fonts/font.tres" type="DynamicFont" id=13]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -42,10 +39,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=3]
-size = 45
-font_data = ExtResource( 1 )
-
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,11 +56,10 @@ margin_right = 7.0
 margin_bottom = 7.0
 
 [node name="Sprite2" type="Sprite" parent="PanelContainer"]
-show_behind_parent = true
 scale = Vector2( 10, 10 )
 texture = ExtResource( 7 )
 
-[node name="Button" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -76,31 +68,55 @@ margin_left = -160.0
 margin_top = -59.0
 margin_right = 160.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 13 )
 text = "START"
 flat = true
-script = ExtResource( 6 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Button"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Play"]
 show_behind_parent = true
 scale = Vector2( 5, 5 )
 frames = SubResource( 2 )
 playing = true
 centered = false
 
-[node name="Button2" type="Button" parent="."]
+[node name="Tutorial" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -160.0
-margin_top = 161.5
+margin_top = 49.0
 margin_right = 160.0
-margin_bottom = 244.5
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 13 )
+text = "TUTORIAL"
+flat = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Tutorial"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 2 )
+playing = true
+centered = false
+
+[node name="Quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = 275.0
+margin_right = 160.0
+margin_bottom = 358.0
+custom_fonts/font = ExtResource( 13 )
 text = "EXIT"
 flat = true
 script = ExtResource( 10 )
@@ -108,22 +124,22 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Button2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Quit"]
 show_behind_parent = true
 scale = Vector2( 5, 5 )
 frames = SubResource( 4 )
 centered = false
 
-[node name="Label" type="Label" parent="."]
+[node name="Outfit" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -160.0
-margin_top = 52.0
+margin_top = 157.0
 margin_right = 160.0
-margin_bottom = 132.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 237.0
+custom_fonts/font = ExtResource( 13 )
 text = "COMING SOON"
 align = 1
 valign = 1
@@ -131,13 +147,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Label"]
+[node name="Sprite" type="Sprite" parent="Outfit"]
 show_behind_parent = true
 position = Vector2( 160, 40 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 9 )
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -155,9 +172,20 @@ position = Vector2( 0, 17 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 4 )
 
-[connection signal="button_up" from="Button" to="Button" method="_on_Button_button_up"]
-[connection signal="mouse_entered" from="Button" to="Button" method="_on_Button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="Button" method="_on_Button_mouse_exited"]
-[connection signal="button_up" from="Button2" to="Button2" method="_on_Button2_button_up"]
-[connection signal="mouse_entered" from="Button2" to="Button2" method="_on_Button2_mouse_entered"]
-[connection signal="mouse_exited" from="Button2" to="Button2" method="_on_Button2_mouse_exited"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+zoom = Vector2( 1.3, 1.3 )
+
+[connection signal="button_up" from="Play" to="Play" method="_on_Play_button_up"]
+[connection signal="button_up" from="Play" to="Play" method="_on_Button_button_up"]
+[connection signal="mouse_entered" from="Play" to="Play" method="_on_Play_mouse_entered"]
+[connection signal="mouse_entered" from="Play" to="Play" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="Play" method="_on_Play_mouse_exited"]
+[connection signal="mouse_exited" from="Play" to="Play" method="_on_Button_mouse_exited"]
+[connection signal="button_up" from="Tutorial" to="Tutorial" method="_on_Button_button_up"]
+[connection signal="mouse_entered" from="Tutorial" to="Tutorial" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Tutorial" to="Tutorial" method="_on_Button_mouse_exited"]
+[connection signal="button_up" from="Quit" to="Quit" method="_on_Button2_button_up"]
+[connection signal="mouse_entered" from="Quit" to="Quit" method="_on_Button2_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="Quit" method="_on_Button2_mouse_exited"]

@@ -12,11 +12,15 @@ var keylr = 0
 var wallside = 0
 var rotate = 0
 var isrotated = 0
-var coins = 0
+var coins = Global.score
 var firespeed = 0
 var ammocount = 8
 var pistol = false
+var Crown = false
 var checkpoint = [0,0]
+
+func _ready():
+	$coins.text = str(coins)
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("esc"):
@@ -24,7 +28,7 @@ func _physics_process(_delta):
 	OS.set_window_fullscreen(true)
 	Global.side = $Sprite.flip_h
 	if lives <= 0:
-		get_tree().change_scene("res://scenes/yourmom.tscn")
+		Global.loadLevel()
 	$ammo.text = str(ammocount,"/8")
 	firespeed = firespeed - 1
 	if Input.is_action_pressed("Rload") and ammocount < 8:
@@ -34,6 +38,16 @@ func _physics_process(_delta):
 		$ammo.visible = true
 	else:
 		$ammo.visible = false
+	if Crown == true:
+		$Sprite/Hats.visible = true
+		if is_on_wall() and not is_on_floor():
+			$Sprite/Hats.play("Crown_wall")
+			if not keylr == 0:
+				$Sprite/Hats.flip_h = keylr - 1
+		else:
+			$Sprite/Hats.play("Crown_idle")
+	else:
+		$Sprite/Hats.visible = false
 
 	keylr = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 	velocity.x = keylr * speed
@@ -103,32 +117,30 @@ func add_coin():
 	
 func _on_Pistol_body_entered(body):
 	pistol = true
-	
-func damage():
-	position.x = checkpoint[0]
-	position.y = checkpoint[1]
-	lives = lives - 1
-	
-func _on_FallZone_body_entered(body):
-	position.x = checkpoint[0]
-	position.y = checkpoint[1]
-	lives = lives - 1
 
-func _on_Area2D_body_entered(body):
-	position.x = checkpoint[0]
-	position.y = checkpoint[1]
-	lives = lives - 1
-	
 func _on_CheckPoint_body_entered(body):
 	checkpoint[0] = position.x
 	checkpoint[1] = position.y
 
-func _on_Area2D_area_entered(area):
+func damage():
 	position.x = checkpoint[0]
 	position.y = checkpoint[1]
-	lives = lives - 1
+	lives -= 1
+	
+func _on_FallZone_body_entered(body):
+	damage()
+
+func _on_Area2D_body_entered(body):
+	damage()
+	
+func _on_Area2D_area_entered(area):
+	damage()
 
 func _on_EnemyProjectile_body_entered(body):
-	position.x = checkpoint[0]
-	position.y = checkpoint[1]
-	lives = lives - 1
+	damage()
+
+func _on_Death_lol_body_entered(body):
+	damage()
+
+func _on_FinalCheckPoint_body_entered(body):
+	Global.score = Global.score + coins

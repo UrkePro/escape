@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/fonts/VeniceClassic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/sprite/urkeprosprites.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/sprite/bitcoin.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprite/heart.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Hats.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=167]
+extents = Vector2( 13.6087, 32 )
+
+[sub_resource type="DynamicFont" id=168]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=169]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=163]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=164]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=165]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=166]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=170]
+animations = [ {
+"frames": [ SubResource( 163 ) ],
+"loop": true,
+"name": "normal",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), null ],
+"loop": false,
+"name": "-1heart",
+"speed": 5.0
+} ]
+
+[sub_resource type="GDScript" id=171]
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_mask = 470
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.33, 0.33 )
+smoothing_speed = 1.0
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 2 )
+animation = "idle"
+
+[node name="Hats" parent="Sprite" instance=ExtResource( 6 )]
+
+[node name="Static" type="CollisionShape2D" parent="."]
+position = Vector2( 0.608704, 0 )
+rotation = 3.14159
+shape = SubResource( 167 )
+one_way_collision = true
+
+[node name="coins" type="Label" parent="."]
+margin_left = -294.5
+margin_top = -192.948
+margin_right = -254.5
+margin_bottom = -159.948
+rect_scale = Vector2( 1.3, 1.3 )
+custom_fonts/font = SubResource( 168 )
+text = "0"
+
+[node name="ammo" type="Label" parent="."]
+margin_left = -333.09
+margin_top = 158.421
+margin_right = -196.09
+margin_bottom = 223.421
+custom_fonts/font = SubResource( 169 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -319.081, -170.307 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+hframes = 5
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 30.0001, 1.99994 )
+
+[node name="hearts1" type="AnimatedSprite" parent="."]
+position = Vector2( 266.065, -174.669 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 170 )
+animation = "normal"
+playing = true
+script = SubResource( 171 )
+
+[node name="hearts2" type="AnimatedSprite" parent="."]
+position = Vector2( 284.344, -153.337 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 170 )
+animation = "normal"
+playing = true
+offset = Vector2( 6.09308, -14.2173 )
+script = SubResource( 171 )
+
+[node name="hearts3" type="AnimatedSprite" parent="."]
+position = Vector2( 312.839, -153.377 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 170 )
+animation = "normal"
+playing = true
+offset = Vector2( 6.09308, -14.2173 )
+script = SubResource( 171 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 278
+
+[node name="Static" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.608826, 0 )
+shape = SubResource( 167 )

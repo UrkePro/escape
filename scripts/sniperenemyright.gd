@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const projectile = preload("res://scenes/enemyprojectile.tscn")
+const projectile = preload("res://scenes/enemyprojectileright.tscn")
 
 var firespeed = 150
 var health = 50
