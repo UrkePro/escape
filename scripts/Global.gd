@@ -2,8 +2,9 @@ extends Node
 
 var player
 var side
-var score = 0
+var score = 100
 var level = 0
+var crown = false
 
 const levels = [
 	"res://scenes/levels/yourmom.tscn",
@@ -20,3 +21,4 @@ func nextLevel():
 	if len(levels) > level + 1:
 		level += 1
 	loadLevel()
+

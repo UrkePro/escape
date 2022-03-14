@@ -12,11 +12,11 @@ var keylr = 0
 var wallside = 0
 var rotate = 0
 var isrotated = 0
-var coins = Global.score
+var coins = 0
 var firespeed = 0
 var ammocount = 8
 var pistol = false
-var Crown = false
+var Crown = Global.crown
 var checkpoint = [0,0]
 
 func _ready():
@@ -143,4 +143,4 @@ func _on_Death_lol_body_entered(body):
 	damage()
 
 func _on_FinalCheckPoint_body_entered(body):
-	Global.score = Global.score + coins
+	Global.score += coins

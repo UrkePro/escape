@@ -1,8 +1,9 @@
 extends Button
 
 func _on_Play_button_up():
-	#Global.nextLevel()
-	Global.loadLevel(1)
+	if Global.level == 0:
+		Global.level = 1
+	Global.loadLevel()
 
 
 func _on_Play_mouse_entered():
