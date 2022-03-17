@@ -1,0 +1,700 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://assets/ui/buttonpressed.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/buttonhovered.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/badbutton.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/menubackgroundl.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/buttoncommingsoon.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scripts/shop.gd" type="Script" id=7]
+[ext_resource path="res://assets/fonts/VeniceClassic.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/ui/uilolback.png" type="Texture" id=9]
+[ext_resource path="res://scripts/GoBack.gd" type="Script" id=10]
+[ext_resource path="res://assets/ui/badbuttonpressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprite/urkewalk.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprite/crowl.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprite/bitcoin.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/buttonhoveredgold.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprite/fedoraicon.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui/buttondefault.png" type="Texture" id=17]
+[ext_resource path="res://assets/ui/buttongold.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprite/fedora.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprite/crownlol.png" type="Texture" id=20]
+[ext_resource path="res://assets/ui/badbuttonlong.png" type="Texture" id=21]
+[ext_resource path="res://assets/ui/badbuttonpressedlong.png" type="Texture" id=22]
+[ext_resource path="res://assets/ui/bluebuttonlong.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprite/goldfedoraicon.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprite/goldfedora.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprite/santahaticon.png" type="Texture" id=26]
+[ext_resource path="res://assets/sprite/santahat.png" type="Texture" id=27]
+[ext_resource path="res://assets/sprite/viking_hat.png" type="Texture" id=28]
+[ext_resource path="res://assets/sprite/vikinghaticon.png" type="Texture" id=29]
+[ext_resource path="res://assets/sprite/amongus_hat.png" type="Texture" id=30]
+[ext_resource path="res://assets/sprite/amongushaticon.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "pressed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "comming_soon",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://assets/fonts/VeniceClassic.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
+font_data = SubResource( 11 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "gold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "pressed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "badlong",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "longgold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "redpressed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "longdefault",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "redefault",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "badlongpressed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "bluelong",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=13]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "viking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "amogus",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "crown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "santa",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "fedora",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": true,
+"name": "gold_fedora",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 20 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 28 )
+region = Rect2( 0, 0, 32, 44 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 32, 40 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 32, 40 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "crown",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ) ],
+"loop": true,
+"name": "viking_hat",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 19 ) ],
+"loop": true,
+"name": "santa_hat",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "fedora",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "amogus_hat",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 18 ) ],
+"loop": true,
+"name": "gold_fedora",
+"speed": 5.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 505, 293 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 4 )
+
+[node name="Soon" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -613.0
+margin_top = -36.0
+margin_right = -293.0
+margin_bottom = 47.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 6 )
+text = "SOON"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Soon"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 2 )
+animation = "comming_soon"
+playing = true
+centered = false
+
+[node name="Soon2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -613.0
+margin_top = 107.0
+margin_right = -293.0
+margin_bottom = 190.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 6 )
+text = "SOON"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Soon2"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 2 )
+animation = "comming_soon"
+playing = true
+centered = false
+
+[node name="Back" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -648.0
+margin_top = -373.0
+margin_right = -328.0
+margin_bottom = -290.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 6 )
+text = "GO BACK"
+flat = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BitCoin" type="AnimatedSprite" parent="Back"]
+position = Vector2( 1445.33, 44 )
+scale = Vector2( 6.66667, 6.66667 )
+frames = SubResource( 10 )
+
+[node name="Label" type="Label" parent="Back/BitCoin"]
+margin_left = 8.4
+margin_top = -8.0
+margin_right = 48.4
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 12 )
+text = "0"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Back"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "redefault"
+centered = false
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.99994
+margin_top = -6.99997
+margin_right = 7.00006
+margin_bottom = 7.00003
+
+[node name="Sprite2" type="Sprite" parent="PanelContainer2"]
+position = Vector2( 0, 7 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="PanelContainer2"]
+show_behind_parent = true
+position = Vector2( 380, 7 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="NextPage" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 383.0
+margin_top = 306.0
+margin_right = 703.0
+margin_bottom = 389.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 6 )
+text = "Next Page"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="NextPage"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 2 )
+animation = "comming_soon"
+playing = true
+centered = false
+
+[node name="Hats" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -613.0
+margin_top = -165.0
+margin_right = -293.0
+margin_bottom = -82.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 6 )
+text = "HATS"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Hats"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 2 )
+playing = true
+centered = false
+
+[node name="HatBtns" type="Container" parent="."]
+margin_left = 265.0
+margin_top = 151.0
+margin_right = 305.0
+margin_bottom = 191.0
+
+[node name="default" type="Button" parent="HatBtns"]
+margin_top = -219.0
+margin_right = 480.0
+margin_bottom = -139.0
+custom_fonts/font = ExtResource( 6 )
+text = "NONE"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/default"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "badlongpressed"
+centered = false
+
+[node name="crown" type="Button" parent="HatBtns"]
+margin_top = -107.0
+margin_right = 480.0
+margin_bottom = -27.0
+rect_pivot_offset = Vector2( -471, 168 )
+custom_fonts/font = ExtResource( 6 )
+text = "Crown"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/crown"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "0"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/crown"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/crown"]
+position = Vector2( 65, 37 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "crown"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/crown"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="fedora" type="Button" parent="HatBtns"]
+margin_top = 298.0
+margin_right = 480.0
+margin_bottom = 378.0
+custom_fonts/font = ExtResource( 6 )
+text = "Fedora"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/fedora"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "75"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/fedora"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/fedora"]
+position = Vector2( 66, 37 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "fedora"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/fedora"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="santa_hat" type="Button" parent="HatBtns"]
+margin_right = 480.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 6 )
+text = "Santa Hat"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/santa_hat"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "0"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/santa_hat"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/santa_hat"]
+position = Vector2( 66, 37 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "santa"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/santa_hat"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="gold_fedora" type="Button" parent="HatBtns"]
+margin_top = 407.0
+margin_right = 480.0
+margin_bottom = 487.0
+custom_fonts/font = ExtResource( 6 )
+text = "Gold Fedora"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/gold_fedora"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "0"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/gold_fedora"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/gold_fedora"]
+position = Vector2( 66, 37 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "gold_fedora"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/gold_fedora"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="viking_hat" type="Button" parent="HatBtns"]
+margin_top = 101.0
+margin_right = 480.0
+margin_bottom = 181.0
+custom_fonts/font = ExtResource( 6 )
+text = "Viking Hat"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/viking_hat"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "50"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/viking_hat"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/viking_hat"]
+position = Vector2( 66, 36 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "viking"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/viking_hat"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="amogus_hat" type="Button" parent="HatBtns"]
+margin_top = 199.0
+margin_right = 480.0
+margin_bottom = 279.0
+custom_fonts/font = ExtResource( 6 )
+text = "Amogus Hat"
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="price" type="Label" parent="HatBtns/amogus_hat"]
+margin_left = 363.0
+margin_top = 14.0
+margin_right = 402.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 13 )
+text = "75"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HatBtns/amogus_hat"]
+show_behind_parent = true
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+animation = "longdefault"
+centered = false
+
+[node name="Icon" type="AnimatedSprite" parent="HatBtns/amogus_hat"]
+position = Vector2( 63, 36 )
+scale = Vector2( 6.9, 6.9 )
+frames = SubResource( 8 )
+animation = "amogus"
+
+[node name="Bitcoinlol" type="AnimatedSprite" parent="HatBtns/amogus_hat"]
+position = Vector2( 439, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 15 )
+
+[node name="PlayerDisplay" type="AnimatedSprite" parent="."]
+position = Vector2( 1012, 273 )
+scale = Vector2( 10, 10 )
+frames = SubResource( 6 )
+flip_h = true
+
+[node name="HatsDisplay" type="AnimatedSprite" parent="."]
+position = Vector2( 1012, 273 )
+scale = Vector2( 10, 10 )
+frames = SubResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+zoom = Vector2( 1.3, 1.3 )
+
+[connection signal="button_up" from="Back" to="Back" method="_on_Back_button_up"]
+[connection signal="mouse_entered" from="Back" to="Back" method="_on_Back_mouse_entered"]
+[connection signal="mouse_exited" from="Back" to="Back" method="_on_Back_mouse_exited"]
+[connection signal="button_up" from="HatBtns/default" to="." method="_on_hat_select" binds= [ "default" ]]
+[connection signal="button_up" from="HatBtns/crown" to="." method="_on_hat_select" binds= [ "crown" ]]
+[connection signal="button_up" from="HatBtns/fedora" to="." method="_on_hat_select" binds= [ "fedora" ]]
+[connection signal="button_up" from="HatBtns/santa_hat" to="." method="_on_hat_select" binds= [ "santa_hat" ]]
+[connection signal="button_up" from="HatBtns/gold_fedora" to="." method="_on_hat_select" binds= [ "gold_fedora" ]]
+[connection signal="button_up" from="HatBtns/viking_hat" to="." method="_on_hat_select" binds= [ "viking_hat" ]]
+[connection signal="button_up" from="HatBtns/amogus_hat" to="." method="_on_hat_select" binds= [ "amogus_hat" ]]

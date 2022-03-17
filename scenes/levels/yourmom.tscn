@@ -1827,7 +1827,7 @@ position = Vector2( 2726, -730 )
 collision_layer = 8
 
 [node name="coin11" parent="." instance=ExtResource( 12 )]
-position = Vector2( 358, -42 )
+position = Vector2( 454, -42 )
 collision_layer = 8
 
 [node name="coin12" parent="." instance=ExtResource( 12 )]

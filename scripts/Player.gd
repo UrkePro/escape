@@ -14,9 +14,11 @@ var rotate = 0
 var isrotated = 0
 var coins = 0
 var firespeed = 0
-var ammocount = 8
+var ammocountpistol = 8
+var ammocountak47 = 30
 var pistol = false
-var Crown = Global.crown
+var ak_47 = false
+var hat = Global.hat
 var checkpoint = [0,0]
 
 func _ready():
@@ -25,59 +27,100 @@ func _ready():
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("esc"):
 		get_tree().change_scene("res://scenes/menu.tscn")
-	OS.set_window_fullscreen(true)
 	Global.side = $Sprite.flip_h
 	if lives <= 0:
 		Global.loadLevel()
-	$ammo.text = str(ammocount,"/8")
+	$ammo_pistol.text = str(ammocountpistol,"/8")
+	$ammo_ak47.text = str(ammocountak47,"/30")
 	firespeed = firespeed - 1
-	if Input.is_action_pressed("Rload") and ammocount < 8:
+
+	if Input.is_action_pressed("Rload") and ammocountpistol < 8 and pistol == true:
 		firespeed = 120
-		ammocount = 8
+		ammocountpistol = 8
+	if Input.is_action_pressed("Rload") and ammocountak47 < 30 and ak_47 == true:
+		firespeed = 300
+		ammocountak47 = 30
+
 	if pistol == true:
-		$ammo.visible = true
+		$ammo_pistol.visible = true
 	else:
-		$ammo.visible = false
-	if Crown == true:
-		$Sprite/Hats.visible = true
-		if is_on_wall() and not is_on_floor():
-			$Sprite/Hats.play("Crown_wall")
-			if not keylr == 0:
-				$Sprite/Hats.flip_h = keylr - 1
-		else:
-			$Sprite/Hats.play("Crown_idle")
+		$ammo_pistol.visible = false
+
+	if ak_47 == true:
+		$ammo_ak47.visible = true
 	else:
-		$Sprite/Hats.visible = false
+		$ammo_ak47.visible = false
+
+	$Sprite/Hats.visible = Global.hat != "default"
+	$Sprite/HatParticles.emitting = Global.hat == "gold_fedora"
+	
+	if is_on_wall() and not is_on_floor():
+		$Sprite/Hats.play(Global.hat + "_wall")
+		keylr *= -1
+	else:
+		$Sprite/Hats.play(Global.hat + "_idle")
+
+	if keylr != 0:
+		$Sprite/Hats.flip_h = keylr > 0
 
 	keylr = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 	velocity.x = keylr * speed
-	match pistol:
-		false:
-			if not keylr ==0:
-				$Sprite.play("walk")
-			else :
-				$Sprite.play("idle")
-			if not is_on_floor():
-				$Sprite.play("air")
-			if is_on_wall() and not is_on_floor():
-				$Sprite.play("wall_jump")
-		true:
-			if not keylr ==0:
-				$Sprite.play("walk_pistol")
-			else :
-				$Sprite.play("idle_pistol")
-			if not is_on_floor():
-				$Sprite.play("air_pistol")
-			if is_on_wall() and not is_on_floor():
-				$Sprite.play("wall_jump_pistol")
+	if ak_47 == false:
+		match pistol:
+			false:
+				if not keylr ==0:
+					$Sprite.play("walk")
+				else :
+					$Sprite.play("idle")
+				if not is_on_floor():
+					$Sprite.play("air")
+				if is_on_wall() and not is_on_floor():
+					$Sprite.play("wall_jump")
+			true:
+				if not keylr ==0:
+					$Sprite.play("walk_pistol")
+				else :
+					$Sprite.play("idle_pistol")
+				if not is_on_floor():
+					$Sprite.play("air_pistol")
+				if is_on_wall() and not is_on_floor():
+					$Sprite.play("wall_jump_pistol")
+	else:
+		match ak_47:
+			false:
+				if not keylr ==0:
+					$Sprite.play("walk")
+				else :
+					$Sprite.play("idle")
+				if not is_on_floor():
+					$Sprite.play("air")
+				if is_on_wall() and not is_on_floor():
+					$Sprite.play("wall_jump")
+			true:
+				if not keylr ==0:
+					$Sprite.play("walk_ak47")
+				else :
+					$Sprite.play("idle_ak47")
+				if not is_on_floor():
+					$Sprite.play("air_ak47")
+				if is_on_wall() and not is_on_floor():
+					$Sprite.play("wall_jump_ak47")
+
 	if keylr != 0:
 		$Sprite.flip_h = keylr < 0
 		$Position2D.position.x = 30 * keylr
 
-	if Input.is_action_pressed("Fire") and firespeed <= 0 and ammocount > 0 and pistol == true:
+	if Input.is_action_pressed("Fire") and firespeed <= 0 and ammocountpistol > 0 and pistol == true:
 		var Ammo = ammo.instance()
 		firespeed = 30
-		ammocount = ammocount - 1
+		ammocountpistol = ammocountpistol - 1
+		get_parent().add_child(Ammo)
+		Ammo.position = $Position2D.global_position
+
+	if Input.is_action_pressed("Fire") and firespeed <= 0 and ammocountak47 > 0 and ak_47 == true:
+		var Ammo = ammo.instance()
+		firespeed = 10
+		ammocountak47 = ammocountak47 - 1
 		get_parent().add_child(Ammo)
 		Ammo.position = $Position2D.global_position
 
@@ -117,6 +160,11 @@ func add_coin():
 	
 func _on_Pistol_body_entered(body):
 	pistol = true
+	ak_47 = false
+
+func _on_Ak_47_body_entered(body):
+	ak_47 = true
+	pistol = false
 
 func _on_CheckPoint_body_entered(body):
 	checkpoint[0] = position.x

@@ -4,4 +4,7 @@ func _ready():
 	pass
 
 func _on_FinalCheckPoint_body_entered(body):
-	Global.nextLevel()
+	if Global.level == 0:
+		get_tree().change_scene("res://scenes/menu.tscn")
+	else:
+		Global.nextLevel()
