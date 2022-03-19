@@ -14,6 +14,7 @@ var rotate = 0
 var isrotated = 0
 var coins = 0
 var firespeed = 0
+var reloadtime = 0
 var ammocountpistol = 8
 var ammocountak47 = 30
 var pistol = false
@@ -26,20 +27,25 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("esc"):
-		get_tree().change_scene("res://scenes/menu.tscn")
+		Global.goto_menu()
 	Global.side = $Sprite.flip_h
 	if lives <= 0:
-		Global.loadLevel()
+		get_tree().reload_current_scene()
 	$ammo_pistol.text = str(ammocountpistol,"/8")
 	$ammo_ak47.text = str(ammocountak47,"/30")
-	firespeed = firespeed - 1
+	firespeed -= 1
+	reloadtime -= 1
+	
+	if reloadtime == 0:
+		ammocountpistol = 8
+		ammocountak47 = 30
 
 	if Input.is_action_pressed("Rload") and ammocountpistol < 8 and pistol == true:
-		firespeed = 120
-		ammocountpistol = 8
+		reloadtime = 60
+		
 	if Input.is_action_pressed("Rload") and ammocountak47 < 30 and ak_47 == true:
-		firespeed = 300
-		ammocountak47 = 30
+		reloadtime = 150
+
 
 	if pistol == true:
 		$ammo_pistol.visible = true
@@ -110,14 +116,14 @@ func _physics_process(_delta):
 		$Sprite.flip_h = keylr < 0
 		$Position2D.position.x = 30 * keylr
 
-	if Input.is_action_pressed("Fire") and firespeed <= 0 and ammocountpistol > 0 and pistol == true:
+	if Input.is_action_pressed("Fire") and firespeed <= 0 and reloadtime <= 0 and ammocountpistol > 0 and pistol == true:
 		var Ammo = ammo.instance()
 		firespeed = 30
 		ammocountpistol = ammocountpistol - 1
 		get_parent().add_child(Ammo)
 		Ammo.position = $Position2D.global_position
 
-	if Input.is_action_pressed("Fire") and firespeed <= 0 and ammocountak47 > 0 and ak_47 == true:
+	if Input.is_action_pressed("Fire") and firespeed <= 0 and reloadtime <= 0  and ammocountak47 > 0 and ak_47 == true:
 		var Ammo = ammo.instance()
 		firespeed = 10
 		ammocountak47 = ammocountak47 - 1
@@ -191,4 +197,10 @@ func _on_Death_lol_body_entered(body):
 	damage()
 
 func _on_FinalCheckPoint_body_entered(body):
-	Global.score += coins
+	if get_tree().current_scene.filename == Global.levels[0]:
+		if not Global.done_tutorial:
+			Global.score += coins
+		Global.goto_menu()
+	else:
+		Global.score += coins
+		Global.nextLevel()

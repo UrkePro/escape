@@ -70,7 +70,7 @@ frames = ExtResource( 2 )
 animation = "idle"
 
 [node name="Hats" parent="Sprite" instance=ExtResource( 6 )]
-animation = "Crown_idle"
+animation = "crown_idle"
 flip_h = true
 
 [node name="HatParticles" type="CPUParticles2D" parent="Sprite"]

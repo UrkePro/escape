@@ -1721,7 +1721,7 @@ custom_fonts/font = SubResource( 172 )
 text = "There are few types of enemies"
 
 [node name="Player" parent="." instance=ExtResource( 35 )]
-position = Vector2( 222, -49 )
+position = Vector2( 222, -48 )
 
 [node name="Pistol" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1950, -710 )

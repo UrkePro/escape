@@ -1888,3 +1888,4 @@ position = Vector2( 1711, -1304 )
 [connection signal="body_entered" from="CheckPoint" to="Player" method="_on_CheckPoint_body_entered"]
 [connection signal="body_entered" from="CheckPoint2" to="Player" method="_on_CheckPoint_body_entered"]
 [connection signal="body_entered" from="CheckPoint3" to="Player" method="_on_CheckPoint_body_entered"]
+[connection signal="body_entered" from="FinalCheckPoint" to="Player" method="_on_FinalCheckPoint_body_entered"]
