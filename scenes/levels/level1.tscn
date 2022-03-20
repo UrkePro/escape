@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://assets/background/torch.png" type="Texture" id=1]
 [ext_resource path="res://assets/background/backgroundlol.png" type="Texture" id=2]
@@ -8,21 +8,20 @@
 [ext_resource path="res://assets/fonts/VeniceClassic.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/background/desks.png" type="Texture" id=7]
 [ext_resource path="res://assets/tilemap/TilesBricksBlue.png" type="Texture" id=8]
-[ext_resource path="res://scenes/Pistol.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/weapons/pistol.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/background/books.png" type="Texture" id=11]
 [ext_resource path="res://assets/tilemap/spikes.png" type="Texture" id=12]
-[ext_resource path="res://scenes/fatenemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/enemies/fatenemy.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/checkpoint.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/sniperenemy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/background/crackedbricks.png" type="Texture" id=16]
 [ext_resource path="res://assets/tilemap/TilesBricksWhite.png" type="Texture" id=17]
 [ext_resource path="res://assets/background/1*1pictures.png" type="Texture" id=18]
 [ext_resource path="res://assets/background/trollfacebloodbackground.png" type="Texture" id=19]
-[ext_resource path="res://scenes/sniperenemyright.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/enemies/sniperenemy.tscn" type="PackedScene" id=20]
 [ext_resource path="res://assets/tilemap/TilesBricksGold.png" type="Texture" id=21]
 [ext_resource path="res://assets/background/booksshelfs.png" type="Texture" id=22]
-[ext_resource path="res://scenes/FinalCheckPoint.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/final_checkpoint.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/background/nosignaltv.png" type="Texture" id=24]
 [ext_resource path="res://assets/background/chains.png" type="Texture" id=25]
 [ext_resource path="res://assets/tilemap/enemyai.png" type="Texture" id=26]
@@ -30,7 +29,7 @@
 [ext_resource path="res://assets/background/trollfacebrokenbackground.png" type="Texture" id=28]
 [ext_resource path="res://assets/background/pipes.png" type="Texture" id=30]
 [ext_resource path="res://assets/background/string.png" type="Texture" id=31]
-[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scenes/enemies/enemy.tscn" type="PackedScene" id=32]
 [ext_resource path="res://scenes/coin.tscn" type="PackedScene" id=33]
 
 [sub_resource type="TileSet" id=171]
@@ -1759,13 +1758,15 @@ position = Vector2( 247, -639 )
 [node name="Enemy8" parent="." instance=ExtResource( 32 )]
 position = Vector2( 375, -639 )
 
-[node name="SniperEnemy" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1264, -427 )
-
 [node name="sniperenemy" parent="." instance=ExtResource( 20 )]
 position = Vector2( 113, -634 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
+
+[node name="sniperenemy2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 1262, -425 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
 
 [node name="CheckPoint" parent="." instance=ExtResource( 14 )]
 position = Vector2( 160, -24 )

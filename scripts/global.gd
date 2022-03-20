@@ -12,7 +12,8 @@ const levels = [
 	"res://scenes/levels/yourmom.tscn",
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level3.tscn"
+	"res://scenes/levels/level3.tscn",
+	"res://scenes/levels/level4.tscn"
 ]
 
 const hats = {

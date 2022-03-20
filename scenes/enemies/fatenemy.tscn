@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/Fatenemy.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemies/fatenemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprite/fatenemyidle.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprite/fatenemywalk.png" type="Texture" id=3]
 
@@ -29,7 +29,6 @@ animations = [ {
 extents = Vector2( 10.5, 15.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 142, 90 )
 collision_layer = 16
 collision_mask = 547
 script = ExtResource( 1 )
@@ -40,6 +39,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "walk"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
